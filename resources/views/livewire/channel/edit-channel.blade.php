@@ -4,6 +4,9 @@
             {{ session('message') }}
         </div>
     @endif
+    @if ($channel->image)
+        <img src="{{ asset('images' . '/' . $channel->image) }}" class="img-thumbnail">
+    @endif
     <form wire:submit.prevent="update">
         <div class="form-group">
             <label for="name">Name</label>
