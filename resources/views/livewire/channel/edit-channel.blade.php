@@ -40,6 +40,26 @@
         </div>
 
         <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" class="form-control @error('image') is-invalid @enderror" wire:model="image" />
+            <div class="form-group">
+                <div wire:loading wire:target="image">Uploading...</div>
+                @if ($image)
+                    Photo Preview:
+                    <img src="{{ $image->temporaryUrl() }}" class="img-thumbnail">
+                @endif
+            </div>
+
+
+            @error('image')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
+
+        <div class="form-group">
             <button type="submit" class="btn btn-primary">Update</button>
         </div>
     </form>
