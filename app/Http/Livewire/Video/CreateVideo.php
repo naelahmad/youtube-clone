@@ -17,7 +17,7 @@ class CreateVideo extends Component
     public $videoFile;
 
     protected $rules = [
-        'videoFile' => 'required|mimes:m4v,avi,flv,mp4,mov|max:1228800',
+        'videoFile' => 'required|mimes:m4v,avi,flv,mp4,mov,webm|max:1228800',
 
     ];
     public function mount(Channel $channel)
@@ -30,7 +30,6 @@ class CreateVideo extends Component
     }
     public function fileCompleted()
     {
-        dd('hello');
         //validation
         $this->validate();
         //create video record in db
