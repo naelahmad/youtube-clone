@@ -33,11 +33,17 @@ class CreateVideo extends Component
         //validation
         $this->validate();
         //create video record in db
+        $path = $this->videoFile->store('videos-temp');
+        $videoName = explode('/', $path)[1];
+
+
         $this->video = $this->channel->videos()->create([
             'title' => 'Untitled',
             'description' => 'none',
             'uid' => uniqid(true),
             'visibility' => 'private',
+            'path'=>$videoName
+
         ]);
         //redirect to edit route
         return redirect()->route('video.edit', [
