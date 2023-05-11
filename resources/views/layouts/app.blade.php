@@ -60,9 +60,17 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a href="{{ route('video.create', ['channel' => Auth::user()->channel]) }}" class="nav-link">
+                                <a href="{{ route('video.create', ['channel' => Auth::user()->channel]) }}"
+                                    class="nav-link">
                                     <span class="material-icons">
                                         video_call
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('video.all') }}" class="nav-link">
+                                    <span class="material-icons">
+                                        video_library
                                     </span>
                                 </a>
                             </li>
