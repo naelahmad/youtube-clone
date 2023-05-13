@@ -5,6 +5,11 @@
                 @foreach ($videos as $video)
                     <div class="card my-2">
                         <div class="card-body">
+                            @if (session()->has('message'))
+                                <div class="alert alert-success">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
                             <div class="row">
                                 <div class="col-md-2"></div>
                                 <div class="col-md-3">
@@ -22,7 +27,7 @@
                                         class="btn btn-light btn-sm">
                                         Edit
                                     </a>
-                                    <a href="" class="btn btn-light btn-sm">
+                                    <a wire:click.prevent="delete('{{ $video->uid }}')" class="btn btn-light btn-sm">
                                         Delete
                                     </a>
                                 </div>
