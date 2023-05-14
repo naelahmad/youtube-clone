@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 
 class CreateThumbnailFromVideo implements ShouldQueue
 {
@@ -28,6 +29,15 @@ class CreateThumbnailFromVideo implements ShouldQueue
      */
     public function handle(): void
     {
-        //
+        $destination = '/' . $this->video->uid . '/' . $this->video->uid . '.png';
+        FFMpeg::fromDisk('videos-temp')
+            ->open($this->video->path)
+            ->getFrameFromSeconds(5)
+            ->export()
+            ->toDisk('videos')
+            ->save($destination);
+        $this->video->update([
+            'thumbnail_image' => $this->video->uid . '.png'
+        ]);
     }
 }

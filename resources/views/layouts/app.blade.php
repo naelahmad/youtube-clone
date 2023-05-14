@@ -68,7 +68,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('video.all') }}" class="nav-link">
+                                <a href="{{ route('video.all', ['channel' => Auth::user()->channel]) }}" class="nav-link">
                                     <span class="material-icons">
                                         video_library
                                     </span>
