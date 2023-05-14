@@ -43,6 +43,12 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        'videos-temp' => [
+            'driver' => 'local',
+            'root' => storage_path('app/videos-temp'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',
